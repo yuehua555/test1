@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: '斑头雁旅行',
       theme: ThemeData.light(),
+      debugShowCheckedModeBanner: false,
       home: BottomNavigationBars(), // 底部导航栏
     );
   }

@@ -70,3 +70,11 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  assets:
+     - asset/images/airport1.jpg
+     - asset/images/bty1.jpg
+     - asset/images/compass1.jpg
+     - asset/images/mountain1.jpg
+     - asset/images/route.jpg
+     - asset/images/train1.jpg

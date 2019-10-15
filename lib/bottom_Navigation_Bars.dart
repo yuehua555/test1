@@ -37,7 +37,7 @@ class _BottomNavigationBarsState extends State<BottomNavigationBars> {
                 color: _bottomNavigationColor,
               ),
               title:
-              Text('首页', style: TextStyle(color: _bottomNavigationColor))),
+              Text('斑头雁旅行', style: TextStyle(color: _bottomNavigationColor))),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.account_box,
