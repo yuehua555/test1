@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as Dialog;
 import 'dart:async';
 import 'train_model.dart';
+import 'station_model.dart';
 import 'dart:io';
 import 'package:dio/dio.dart';
 
@@ -13,9 +14,11 @@ const bool __printDebug = true;
 /// Picker selected callback.
 typedef PickerSelectedCallback = void Function(
     Picker picker, int index, List<int> selecteds);
+
 /// Picker confirm callback.
 typedef PickerConfirmCallback = void Function(
     Picker picker, List<int> selecteds);
+
 /// Picker value format callback.
 typedef PickerValueFormat<T> = String Function(T value);
 
@@ -42,7 +45,7 @@ class PickerLocalizations {
       'confirmText': 'Conferma',
       'ampm': ['AM', 'PM'],
     },
-    'ar':{
+    'ar': {
       'cancelText': 'إلغاء الأمر',
       'confirmText': 'تأكيد',
       'ampm': ['صباحاً', 'مساءً'],
@@ -61,12 +64,14 @@ class PickerLocalizations {
   const PickerLocalizations(this.locale);
 
   static PickerLocalizations of(BuildContext context) {
-    return Localizations.of<PickerLocalizations>(context, PickerLocalizations) ?? _static;
+    return Localizations.of<PickerLocalizations>(
+            context, PickerLocalizations) ??
+        _static;
   }
 
   Object getItem(String key) {
     Map localData;
-    if (locale != null)  localData = localizedValues[locale.languageCode];
+    if (locale != null) localData = localizedValues[locale.languageCode];
     if (localData == null) return localizedValues['en'][key];
     return localData[key];
   }
@@ -76,15 +81,16 @@ class PickerLocalizations {
   List get ampm => getItem("ampm");
 }
 
-
 /// Picker
 class Picker {
   static const double DefaultTextSize = 20.0;
 
   /// Index of currently selected items
   List<int> selecteds;
+
   /// Picker adapter, Used to provide data and generate widgets
   final PickerAdapter adapter;
+
   /// insert separator before picker columns
   final List<PickerDelimiter> delimiter;
 
@@ -109,7 +115,10 @@ class Picker {
   /// Height of list item
   final double itemExtent;
 
-  final TextStyle textStyle, cancelTextStyle, confirmTextStyle, selectedTextStyle;
+  final TextStyle textStyle,
+      cancelTextStyle,
+      confirmTextStyle,
+      selectedTextStyle;
   final TextAlign textAlign;
 
   /// Text scaling factor
@@ -133,34 +142,34 @@ class Picker {
 
   Picker(
       {this.adapter,
-        this.delimiter,
-        this.selecteds,
-        this.height = 150.0,
-        this.itemExtent = 28.0,
-        this.columnPadding,
-        this.textStyle,
-        this.cancelTextStyle,
-        this.confirmTextStyle,
-        this.selectedTextStyle,
-        this.textAlign = TextAlign.start,
-        this.textScaleFactor,
-        this.title,
-        this.cancel,
-        this.confirm,
-        this.cancelText,
-        this.confirmText,
-        this.backgroundColor = Colors.white,
-        this.containerColor,
-        this.headercolor,
-        this.changeToFirst = false,
-        this.hideHeader = false,
-        this.looping = false,
-        this.headerDecoration,
-        this.columnFlex,
-        this.footer,
-        this.onCancel,
-        this.onSelect,
-        this.onConfirm})
+      this.delimiter,
+      this.selecteds,
+      this.height = 150.0,
+      this.itemExtent = 28.0,
+      this.columnPadding,
+      this.textStyle,
+      this.cancelTextStyle,
+      this.confirmTextStyle,
+      this.selectedTextStyle,
+      this.textAlign = TextAlign.start,
+      this.textScaleFactor,
+      this.title,
+      this.cancel,
+      this.confirm,
+      this.cancelText,
+      this.confirmText,
+      this.backgroundColor = Colors.white,
+      this.containerColor,
+      this.headercolor,
+      this.changeToFirst = false,
+      this.hideHeader = false,
+      this.looping = false,
+      this.headerDecoration,
+      this.columnFlex,
+      this.footer,
+      this.onCancel,
+      this.onSelect,
+      this.onConfirm})
       : assert(adapter != null);
 
   Widget get widget => _widget;
@@ -173,7 +182,8 @@ class Picker {
     _maxLevel = adapter.maxLevel;
     adapter.picker = this;
     adapter.initSelects();
-    _widget = _PickerWidget(picker: this, themeData: themeData, isModal: isModal);
+    _widget =
+        _PickerWidget(picker: this, themeData: themeData, isModal: isModal);
     return _widget;
   }
 
@@ -201,28 +211,36 @@ class Picker {
           List<Widget> actions = [];
 
           if (cancel == null) {
-            String _cancelText = cancelText ?? PickerLocalizations.of(context).cancelText;
+            String _cancelText =
+                cancelText ?? PickerLocalizations.of(context).cancelText;
             if (_cancelText != null && _cancelText != "") {
               actions.add(FlatButton(
                   onPressed: () {
                     Navigator.pop(context);
                     if (onCancel != null) onCancel();
                   },
-                  child: cancelTextStyle == null ? Text(_cancelText) : DefaultTextStyle(child: Text(_cancelText), style: cancelTextStyle)));
+                  child: cancelTextStyle == null
+                      ? Text(_cancelText)
+                      : DefaultTextStyle(
+                          child: Text(_cancelText), style: cancelTextStyle)));
             }
           } else {
             actions.add(cancel);
           }
 
           if (confirm == null) {
-            String _confirmText = confirmText ?? PickerLocalizations.of(context).confirmText;
+            String _confirmText =
+                confirmText ?? PickerLocalizations.of(context).confirmText;
             if (_confirmText != null && _confirmText != "") {
               actions.add(FlatButton(
                   onPressed: () {
                     Navigator.pop(context);
                     if (onConfirm != null) onConfirm(this, selecteds);
                   },
-                  child: confirmTextStyle == null ? Text(_confirmText) : DefaultTextStyle(child: Text(_confirmText), style: confirmTextStyle)));
+                  child: confirmTextStyle == null
+                      ? Text(_confirmText)
+                      : DefaultTextStyle(
+                          child: Text(_confirmText), style: confirmTextStyle)));
             }
           } else {
             actions.add(confirm);
@@ -251,12 +269,10 @@ class Picker {
 
   /// 确定
   void doConfirm(BuildContext context) {
-    if (onConfirm != null)
-      onConfirm(this, selecteds);
+    if (onConfirm != null) onConfirm(this, selecteds);
     Navigator.of(context).pop();
     _widget = null;
   }
-
 }
 
 /// 分隔符
@@ -284,7 +300,8 @@ class _PickerWidget<T> extends StatefulWidget {
   final Picker picker;
   final ThemeData themeData;
   final bool isModal;
-  _PickerWidget({Key key, @required this.picker, @required this.themeData, this.isModal})
+  _PickerWidget(
+      {Key key, @required this.picker, @required this.themeData, this.isModal})
       : super(key: key);
 
   @override
@@ -309,8 +326,8 @@ class PickerWidgetState<T> extends State<_PickerWidget> {
 
     if (scrollController.length == 0) {
       for (int i = 0; i < picker._maxLevel; i++)
-        scrollController.add(
-            FixedExtentScrollController(initialItem: picker.selecteds[i]));
+        scrollController
+            .add(FixedExtentScrollController(initialItem: picker.selecteds[i]));
     }
   }
 
@@ -322,19 +339,21 @@ class PickerWidgetState<T> extends State<_PickerWidget> {
         (picker.hideHeader)
             ? SizedBox()
             : Container(
-          child: Row(
-            children: _buildHeaderViews(),
-          ),
-          decoration: picker.headerDecoration ?? BoxDecoration(
-            border: Border(
-              top: BorderSide(color: theme.dividerColor, width: 0.5),
-              bottom: BorderSide(color: theme.dividerColor, width: 0.5),
-            ),
-            color: picker.headercolor == null
-                ? theme.bottomAppBarColor
-                : picker.headercolor,
-          ),
-        ),
+                child: Row(
+                  children: _buildHeaderViews(),
+                ),
+                decoration: picker.headerDecoration ??
+                    BoxDecoration(
+                      border: Border(
+                        top: BorderSide(color: theme.dividerColor, width: 0.5),
+                        bottom:
+                            BorderSide(color: theme.dividerColor, width: 0.5),
+                      ),
+                      color: picker.headercolor == null
+                          ? theme.bottomAppBarColor
+                          : picker.headercolor,
+                    ),
+              ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: _buildViews(),
@@ -342,8 +361,7 @@ class PickerWidgetState<T> extends State<_PickerWidget> {
         picker.footer ?? SizedBox(width: 0.0, height: 0.0),
       ],
     );
-    if (widget.isModal == null || widget.isModal == false)
-      return v;
+    if (widget.isModal == null || widget.isModal == false) return v;
     return GestureDetector(
       onTap: () {},
       child: v,
@@ -355,44 +373,49 @@ class PickerWidgetState<T> extends State<_PickerWidget> {
     List<Widget> items = [];
 
     if (picker.cancel != null) {
-      items.add(DefaultTextStyle(style: picker.cancelTextStyle ?? TextStyle(
-          color: theme.accentColor, fontSize: Picker.DefaultTextSize
-      ), child: picker.cancel));
+      items.add(DefaultTextStyle(
+          style: picker.cancelTextStyle ??
+              TextStyle(
+                  color: theme.accentColor, fontSize: Picker.DefaultTextSize),
+          child: picker.cancel));
     } else {
-      String _cancelText = picker.cancelText ?? PickerLocalizations.of(context).cancelText;
+      String _cancelText =
+          picker.cancelText ?? PickerLocalizations.of(context).cancelText;
       if (_cancelText != null || _cancelText != "") {
         items.add(FlatButton(
             onPressed: () {
               picker.doCancel(context);
             },
-            child: Text(_cancelText, overflow: TextOverflow.ellipsis,
-                style: picker.cancelTextStyle ?? TextStyle(
-                    color: theme.accentColor, fontSize: Picker.DefaultTextSize
-                )
-            )
-        ));
+            child: Text(_cancelText,
+                overflow: TextOverflow.ellipsis,
+                style: picker.cancelTextStyle ??
+                    TextStyle(
+                        color: theme.accentColor,
+                        fontSize: Picker.DefaultTextSize))));
       }
     }
 
     items.add(Expanded(
         child: Container(
-          alignment: Alignment.center,
-          child: picker.title == null
-              ? picker.title
-              : DefaultTextStyle(
+      alignment: Alignment.center,
+      child: picker.title == null
+          ? picker.title
+          : DefaultTextStyle(
               style: TextStyle(
                   fontSize: Picker.DefaultTextSize,
                   color: theme.textTheme.title.color),
               child: picker.title),
-        )));
-
+    )));
 
     if (picker.confirm != null) {
-      items.add(DefaultTextStyle(style: picker.confirmTextStyle ?? TextStyle(
-          color: theme.accentColor, fontSize: Picker.DefaultTextSize
-      ), child: picker.confirm));
+      items.add(DefaultTextStyle(
+          style: picker.confirmTextStyle ??
+              TextStyle(
+                  color: theme.accentColor, fontSize: Picker.DefaultTextSize),
+          child: picker.confirm));
     } else {
-      String _confirmText = picker.confirmText ?? PickerLocalizations.of(context).confirmText;
+      String _confirmText =
+          picker.confirmText ?? PickerLocalizations.of(context).confirmText;
       if (_confirmText != null || _confirmText != "") {
         items.add(FlatButton(
             onPressed: () {
@@ -436,7 +459,7 @@ class PickerWidgetState<T> extends State<_PickerWidget> {
                   ? theme.dialogBackgroundColor
                   : picker.containerColor,
             ),
-            child:   CupertinoPicker(
+            child: CupertinoPicker(
               backgroundColor: picker.backgroundColor,
               scrollController: scrollController[i],
               itemExtent: picker.itemExtent,
@@ -499,8 +522,7 @@ class PickerWidgetState<T> extends State<_PickerWidget> {
     _changeing = true;
     for (int j = 0; j < picker.selecteds.length; j++) {
       if (j != i) {
-        if (scrollController[j].position.maxScrollExtent == null)
-          continue;
+        if (scrollController[j].position.maxScrollExtent == null) continue;
         scrollController[j].position.notifyListeners();
       }
     }
@@ -528,18 +550,19 @@ abstract class PickerAdapter<T> {
             style: picker.textStyle ??
                 new TextStyle(
                     color: Colors.black87, fontSize: Picker.DefaultTextSize),
-            child: child ?? new Text(text, textScaleFactor: picker.textScaleFactor, style: (isSel ? picker.selectedTextStyle : null))
-        )
-    );
+            child: child ??
+                new Text(text,
+                    textScaleFactor: picker.textScaleFactor,
+                    style: (isSel ? picker.selectedTextStyle : null))));
   }
 
-  Widget makeTextEx(Widget child, String text, Widget postfix, Widget suffix, bool isSel) {
+  Widget makeTextEx(
+      Widget child, String text, Widget postfix, Widget suffix, bool isSel) {
     List<Widget> items = [];
-    if (postfix != null)
-      items.add(postfix);
-    items.add(child ?? new Text(text, style: (isSel ? picker.selectedTextStyle : null)));
-    if (suffix != null)
-      items.add(suffix);
+    if (postfix != null) items.add(postfix);
+    items.add(child ??
+        new Text(text, style: (isSel ? picker.selectedTextStyle : null)));
+    if (suffix != null) items.add(suffix);
 
     var _txtColor = Colors.black87;
     var _txtSize = Picker.DefaultTextSize;
@@ -557,13 +580,10 @@ abstract class PickerAdapter<T> {
             maxLines: 1,
             textAlign: picker.textAlign,
             style: picker.textStyle ??
-                new TextStyle(
-                    color: _txtColor, fontSize: _txtSize),
+                new TextStyle(color: _txtColor, fontSize: _txtSize),
             child: Wrap(
               children: items,
-            )
-        )
-    );
+            )));
   }
 
   String getText() {
@@ -683,7 +703,8 @@ class PickerDataAdapter<T> extends PickerAdapter<T> {
           if (_o is List && _o.length > 0) {
             List<PickerItem> _children = new List<PickerItem<T>>();
             //print('add: ${data.runtimeType.toString()}');
-            data.add(new PickerItem<T>(value: _mapList[j], children: _children));
+            data.add(
+                new PickerItem<T>(value: _mapList[j], children: _children));
             _parsePickerDataItem(_o, _children);
           }
         }
@@ -733,7 +754,8 @@ class PickerDataAdapter<T> extends PickerAdapter<T> {
     if (item.text != null) {
       return item.text;
     }
-    return makeText(item.text, item.text != null ? null : item.value.toString(), index == picker.selecteds[_col]);
+    return makeText(item.text, item.text != null ? null : item.value.toString(),
+        index == picker.selecteds[_col]);
   }
 
   @override
@@ -820,7 +842,9 @@ class NumberPickerColumn {
   }
 
   String getValueText(int index) {
-    return onFormatValue == null ? "${valueOf(index)}" : onFormatValue(valueOf(index));
+    return onFormatValue == null
+        ? "${valueOf(index)}"
+        : onFormatValue(valueOf(index));
   }
 
   int count() {
@@ -880,9 +904,11 @@ class NumberPickerAdapter extends PickerAdapter<int> {
   @override
   Widget buildItem(BuildContext context, int index) {
     if (cur.postfix == null && cur.suffix == null)
-      return makeText(null, cur.getValueText(index), index == picker.selecteds[_col]);
+      return makeText(
+          null, cur.getValueText(index), index == picker.selecteds[_col]);
     else
-      return makeTextEx(null, cur.getValueText(index), cur.postfix, cur.suffix, index == picker.selecteds[_col]);
+      return makeTextEx(null, cur.getValueText(index), cur.postfix, cur.suffix,
+          index == picker.selecteds[_col]);
   }
 
   @override
@@ -931,8 +957,10 @@ class DateTimePickerAdapter extends PickerAdapter<DateTime> {
   final int yearBegin, yearEnd;
   final DateTime minValue, maxValue;
   final String yearSuffix, monthSuffix, daySuffix;
+
   /// use two-digit year, 2019, displayed as 19
   final bool twoDigitYear;
+
   /// year 0, month 1, day 2, hour 3, minute 4, sec 5, am/pm 6, hour-ap: 7
   final List<int> customColumnType;
 
@@ -1045,8 +1073,7 @@ class DateTimePickerAdapter extends PickerAdapter<DateTime> {
 
   // 获取当前列的类型
   int getColumnType(int index) {
-    if (customColumnType != null)
-      return customColumnType[index];
+    if (customColumnType != null) return customColumnType[index];
     List<int> items = columnType[type];
     if (index >= items.length) return -1;
     return items[index];
@@ -1054,11 +1081,12 @@ class DateTimePickerAdapter extends PickerAdapter<DateTime> {
 
   @override
   int getLength() {
-    int v = customColumnType == null ? lengths[type][_col] : columnTypeLength[customColumnType[_col]];
+    int v = customColumnType == null
+        ? lengths[type][_col]
+        : columnTypeLength[customColumnType[_col]];
     if (v == 0) {
       int ye = yearEnd;
-      if (maxValue != null)
-        ye = maxValue.year;
+      if (maxValue != null) ye = maxValue.year;
       return ye - _yearBegin + 1;
     }
     if (v == 31) return _calcDateCount(value.year, value.month);
@@ -1067,7 +1095,9 @@ class DateTimePickerAdapter extends PickerAdapter<DateTime> {
 
   @override
   int getMaxLevel() {
-    return customColumnType == null ? lengths[type].length : customColumnType.length;
+    return customColumnType == null
+        ? lengths[type].length
+        : customColumnType.length;
   }
 
   @override
@@ -1096,7 +1126,8 @@ class DateTimePickerAdapter extends PickerAdapter<DateTime> {
       case 0:
         if (twoDigitYear != null && twoDigitYear) {
           _text = "${_yearBegin + index}";
-          _text = "${_text.substring(_text.length - (_text.length - 2), _text.length)}${_checkStr(yearSuffix)}";
+          _text =
+              "${_text.substring(_text.length - (_text.length - 2), _text.length)}${_checkStr(yearSuffix)}";
         } else
           _text = "${_yearBegin + index}${_checkStr(yearSuffix)}";
         break;
@@ -1121,11 +1152,11 @@ class DateTimePickerAdapter extends PickerAdapter<DateTime> {
         _text = "${_ampm[index]}";
         break;
       case 7:
-        _text = "${intToStr(index+1)}";
+        _text = "${intToStr(index + 1)}";
         break;
     }
 
-    return makeText(null, _text, picker.selecteds[_col]==index);
+    return makeText(null, _text, picker.selecteds[_col] == index);
   }
 
   @override
@@ -1137,15 +1168,13 @@ class DateTimePickerAdapter extends PickerAdapter<DateTime> {
   int getColumnFlex(int column) {
     if (picker.columnFlex != null && column < picker.columnFlex.length)
       return picker.columnFlex[column];
-    if (getColumnType(column) == 0)
-      return 3;
+    if (getColumnType(column) == 0) return 3;
     return 2;
   }
 
   @override
   void doShow() {
-    if (_yearBegin == 0)
-      getLength();
+    if (_yearBegin == 0) getLength();
     for (int i = 0; i < getMaxLevel(); i++) {
       int colType = getColumnType(i);
       switch (colType) {
@@ -1171,8 +1200,9 @@ class DateTimePickerAdapter extends PickerAdapter<DateTime> {
           picker.selecteds[i] = (value.hour > 12 || value.hour == 0) ? 1 : 0;
           break;
         case 7:
-          picker.selecteds[i] = value.hour == 0 ? 11 :
-          (value.hour > 12) ? value.hour - 12 - 1 : value.hour - 1;
+          picker.selecteds[i] = value.hour == 0
+              ? 11
+              : (value.hour > 12) ? value.hour - 12 - 1 : value.hour - 1;
           break;
       }
     }
@@ -1228,14 +1258,15 @@ class DateTimePickerAdapter extends PickerAdapter<DateTime> {
     if (day > __day) day = __day;
     value = new DateTime(year, month, day, h, m, s);
 
-    if (minValue != null && (value.millisecondsSinceEpoch < minValue.millisecondsSinceEpoch)) {
+    if (minValue != null &&
+        (value.millisecondsSinceEpoch < minValue.millisecondsSinceEpoch)) {
       value = minValue;
       notifyDataChanged();
-    } else if (maxValue != null && value.millisecondsSinceEpoch > maxValue.millisecondsSinceEpoch) {
+    } else if (maxValue != null &&
+        value.millisecondsSinceEpoch > maxValue.millisecondsSinceEpoch) {
       value = maxValue;
       notifyDataChanged();
     }
-
   }
 
   int _getAPColIndex() {
@@ -1268,33 +1299,34 @@ class DateTimePickerAdapter extends PickerAdapter<DateTime> {
   }
 }
 
-
 /// 根据省份和市显示火车站点的三级级联选择器
 /// 以Rest的方式得到火车站的省市名称，以及通过用户选择的省市再次调用一个Rest API 得到该省市
 /// 的火车站列表并在选择器的第三列显示出来
-/*
 class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
-
   //final List<int> customColumnType;
 
-  //省, 以 AdCode 为key，value是对应的 title
-  Map<int, String> _metaTrainProvinces;
+  //省, 是一个数组，数组元素是Map<int, String>
+  // 以 AdCode 为key，value是对应的 title
+  List<Map<int, String>> _metaTrainProvinces;
 
   //市，以省的AdCode为key，
   // value是一个Map<int, dynamic>，key是这个市的AdCode，
   // value是一个Map<String, String>，key包括name, title, K, value是相应的数据
   Map<int, dynamic> _metaTrainCities;
 
+  // 第二列的城市显示数组
+  // 以第一列省的AdCode作为查询条件，在_metaTrainCities中查出相对应的城市组成一个
+  // Map数组，key 就是 K，value 是 title
+  List<Map<String, String>> _secondCities;
+
   // 第三列火车站名，通过市的RegionK 得到，是一个数组，数组元素是Map<String, String>
   // key 是 K ，value 是 name
-  Map<String, String> _railwayStations;
+  List<Map<String, String>> _railwayStations;
 
   CustomTrainStationPickerAdapter({
     Picker picker,
-
   }) {
     super.picker = picker;
-
   }
 
   int _col = 0;
@@ -1302,6 +1334,21 @@ class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
 
   int value;
 
+  @override
+  int getLength() {
+    /*
+    int v = customColumnType == null ? lengths[type][_col] : columnTypeLength[customColumnType[_col]];
+    if (v == 0) {
+      int ye = yearEnd;
+      if (maxValue != null)
+        ye = maxValue.year;
+      return ye - _yearBegin + 1;
+    }
+    if (v == 31) return _calcDateCount(value.year, value.month);
+    return v;
+
+     */
+  }
 
   @override
   int getMaxLevel() {
@@ -1322,12 +1369,12 @@ class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
 
   @override
   void initSelects() {
-   // if (value == null) value = DateTime.now();
-   // _colAP = _getAPColIndex();
+    // if (value == null) value = DateTime.now();
+    // _colAP = _getAPColIndex();
     int _maxLevel = getMaxLevel();
     if (_metaTrainProvinces == null) {
       // 第一次加载，得到省市，以及用市的第一个值去得到第三列火车站
-      getTrainProvCtiy().whenComplete(getTrainStationFromC());
+      getTrainProvCtiy().whenComplete(getTrainStationFromC('temp'));
     }
     if (picker.selecteds == null || picker.selecteds.length == 0) {
       //if (picker.selecteds == null) picker.selecteds = new List<int>();
@@ -1337,6 +1384,7 @@ class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
 
   @override
   Widget buildItem(BuildContext context, int index) {
+    /*
     String _text = "";
     int colType = getColumnType(_col);
     switch (colType) {
@@ -1373,20 +1421,22 @@ class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
     }
 
     return makeText(null, _text, picker.selecteds[_col]==index);
-  }
 
+     */
+  }
 
   @override
   int getColumnFlex(int column) {
     if (picker.columnFlex != null && column < picker.columnFlex.length)
       return picker.columnFlex[column];
-    if (getColumnType(column) == 0)
-      return 3;
+    // if (getColumnType(column) == 0)
+    //   return 3;
     return 2;
   }
 
   @override
   void doShow() {
+    /*
     if (_yearBegin == 0)
       getLength();
     for (int i = 0; i < getMaxLevel(); i++) {
@@ -1419,10 +1469,13 @@ class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
           break;
       }
     }
+
+     */
   }
 
   @override
   void doSelect(int column, int index) {
+    /*
     int year, month, day, h, m, s;
     year = value.year;
     month = value.month;
@@ -1479,26 +1532,18 @@ class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
       notifyDataChanged();
     }
 
+     */
   }
 
   int _getAPColIndex() {
+    /*
     List<int> items = customColumnType ?? columnType[type];
     for (int i = 0; i < items.length; i++) {
       if (items[i] == 6) return i;
     }
     return -1;
-  }
 
-  int _calcDateCount(int year, int month) {
-    if (leapYearMonths.contains(month)) {
-      return 31;
-    } else if (month == 2) {
-      if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
-        return 29;
-      }
-      return 28;
-    }
-    return 30;
+     */
   }
 
   String intToStr(int v) {
@@ -1510,11 +1555,9 @@ class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
     return v == null ? "" : v;
   }
 
-  ///城市选择器：https://github.com/hanxu317317/city_pickers
-  ///得到火车站的省市名称，以及通过用户选择的省市在城市选择器的第三列显示查询到的车站名
-  ///数据源构造格式参考 https://github.com/hanxu317317/city_pickers/blob/master/lib/meta/province.dart
   /// 以rest的方式得到原始数据，
-  /// 并构造后赋值给 _metaTrainProvinces 和 _metaTrainCities
+  /// https://test001.btylx.com:6688/api/TcgRegDef  POST
+  /// 得到火车站的省市名称.并构造后赋值给 _metaTrainProvinces 和 _metaTrainCities
   Future getTrainProvCtiy() async {
     var dio = Dio(BaseOptions(
       baseUrl: 'https://test001.btylx.com:6688/',
@@ -1539,18 +1582,19 @@ class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
       // 请求成功
 
       TrainData trainData = TrainData.fromJson(response.data);
-      _metaTrainProvinces = Map<int, String>();
+      _metaTrainProvinces = List();
       _metaTrainCities = Map<int, dynamic>();
+
       ///trainData.content 是所有省和城市的列表信息
       trainData.content.forEach((train) {
-        _metaTrainProvinces[train.adCode] = train.title;
+        _metaTrainProvinces.add({train.adCode: train.title});
 
         Map<int, dynamic> secondCtiyMap = Map<int, dynamic>();
         train.downLines.forEach((secondCity) {
           secondCtiyMap[secondCity.adCode] = {
             'name': secondCity.name,
             'title': secondCity.title,
-            'K' : secondCity.k
+            'K': secondCity.k
           };
         });
 
@@ -1559,17 +1603,76 @@ class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
 
       print(_metaTrainProvinces);
 
+      /*
       _metaTrainCities.forEach((ctiyCode, item) {
         print(ctiyCode);
-        print(item);
-      });
-      // print(_metaTrainCities);
+        print(item.runtimeType);
+      });*/
+      //print(_metaTrainCities[640000]);
+
     } else {
       print('请求失败，状态码为:' + response.statusCode.toString());
     }
 
     // return true;
   }
+
+  /// 通过用户选择的市K值在选择器的第三列显示查询到的车站名
+  /// 调用Rest API
+  /// https://test001.btylx.com:6688/railwayStation?regionK=$K  GET
+  /// 得到原始数据，构造后赋值给_railwayStations
+  getTrainStationFromC(String K) async {
+    var dio = Dio(BaseOptions(
+      baseUrl: 'https://test001.btylx.com:6688/',
+      connectTimeout: 5000,
+      // 5s
+      receiveTimeout: 5000,
+
+      headers: {
+        HttpHeaders.userAgentHeader: 'dio',
+        "api": "1.0.0",
+        HttpHeaders.acceptEncodingHeader: 'gzip, deflate'
+      },
+      // Transform the response data to a String encoded with UTF8.
+      // The default value is [ResponseType.JSON].
+      responseType: ResponseType.json,
+    ));
+
+    Response response;
+    response = await dio.get('railwayStation?regionK=$K');
+    _railwayStations = List();
+    if (response.statusCode == 200) {
+      // 请求成功
+      StationsData stationsData = StationsData.fromJson(response.data);
+      stationsData.content.forEach((Stations stations) {
+        _railwayStations.add({stations.site.k: stations.site.name});
+      });
+      print(_railwayStations);
+    } else {
+      print('请求失败，状态码为:' + response.statusCode.toString());
+    }
+  }
+
+  List<Map<String, String>> getSecondCities(int adCode) {
+
+    Map<int, dynamic> cities = _metaTrainCities[adCode];
+    _secondCities = List();
+    cities.forEach((code, city){
+      //print(code);
+      //print(city);
+      Map<String, String> item = city;
+      _secondCities.add({item['K']:item['title']});
+    });
+    print(_secondCities);
+  }
 }
 
-}*/
+void main() {
+  // 宁夏，吴忠市
+  CustomTrainStationPickerAdapter temp = CustomTrainStationPickerAdapter();
+  temp.getTrainProvCtiy().whenComplete(() {
+    temp.getSecondCities(640000);
+  });
+  // CustomTrainStationPickerAdapter().getTrainStationFromC('fe0N');
+  // CustomTrainStationPickerAdapter().getSecondCities(640000);
+}

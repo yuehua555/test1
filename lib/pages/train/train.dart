@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:city_pickers/city_pickers.dart';
 import 'package:test1/main.dart';
 import 'train_model.dart';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:lpinyin/lpinyin.dart';
-import  'picker.dart';
+import 'picker.dart';
 import 'dart:convert';
 
 class Train extends StatefulWidget {
@@ -46,24 +45,22 @@ class _TrainState extends State<Train> {
           RaisedButton(
             onPressed: () {
               //getTrainProvCtiy().whenComplete(() {
-                /*
+              /*
                 CityPickers.showCityPicker(
                     context: context,
                     showType: ShowType.pca,
                     citiesData: _metaTrainCities,
                     provincesData: _metaTrainProvinces); */
 
-                Picker(
-                    adapter: DateTimePickerAdapter(
-                        ),
-                    changeToFirst: true,
-                    hideHeader: false,
-                    onConfirm: (Picker picker, List value) {
-                      print(value.toString());
-                      print(picker.adapter.text);
-                    }).showModal(this.context);
-             // });
-
+              Picker(
+                  adapter: DateTimePickerAdapter(),
+                  changeToFirst: true,
+                  hideHeader: false,
+                  onConfirm: (Picker picker, List value) {
+                    print(value.toString());
+                    print(picker.adapter.text);
+                  }).showModal(this.context);
+              // });
             },
             child: Text('车站时刻表'),
           )
@@ -102,6 +99,7 @@ class _TrainState extends State<Train> {
 
       TrainData trainData = TrainData.fromJson(response.data);
       l = trainData.content;
+
       ///trainData.content 是所有省和城市的列表信息
       trainData.content.forEach((train) {
         _metaTrainProvinces[train.adCode] = train.title;
@@ -111,7 +109,7 @@ class _TrainState extends State<Train> {
           secondCtiyMap[secondCity.adCode] = {
             'name': secondCity.name,
             'title': secondCity.title,
-            'K' : secondCity.k
+            'K': secondCity.k
           };
         });
 
@@ -129,13 +127,13 @@ class _TrainState extends State<Train> {
       print('请求失败，状态码为:' + response.statusCode.toString());
     }
 
-   // return true;
+    // return true;
   }
 }
 
 void main() {
- // _TrainState().getTrainProvCtiy();
-   runApp(MyApp());
+  // _TrainState().getTrainProvCtiy();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
