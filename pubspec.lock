@@ -99,13 +99,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
-  city_pickers:
-    dependency: "direct main"
-    description:
-      name: city_pickers
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.27"
   code_builder:
     dependency: transitive
     description:
@@ -174,6 +167,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_picker:
+    dependency: "direct main"
+    description:
+      name: flutter_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.15"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -271,7 +271,7 @@ packages:
     source: hosted
     version: "0.11.3+2"
   lpinyin:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: lpinyin
       url: "https://pub.dartlang.org"
@@ -487,3 +487,4 @@ packages:
     version: "2.2.0"
 sdks:
   dart: ">2.4.0 <3.0.0"
+  flutter: ">=0.1.4 <3.0.0"

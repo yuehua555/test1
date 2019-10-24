@@ -24,8 +24,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
-  # 中国的城市三级联动选择器
-  city_pickers: ^0.1.27
+  flutter_picker: ^1.0.15
+
+  # 汉字转拼音
+  lpinyin: ^1.0.7
 
   json_annotation: ^3.0.0
   dio: ^3.0.3
