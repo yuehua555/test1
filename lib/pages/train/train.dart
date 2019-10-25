@@ -1,11 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:test1/main.dart';
 import 'train_model.dart';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:lpinyin/lpinyin.dart';
 import 'picker.dart';
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
+//import 'package:flutter_picker/flutter_picker.dart';
 
 class Train extends StatefulWidget {
   @override
@@ -43,6 +46,7 @@ class _TrainState extends State<Train> {
             height: 100,
           ),
           RaisedButton(
+            child: Text('车站时刻表'),
             onPressed: () {
               //getTrainProvCtiy().whenComplete(() {
               /*
@@ -51,8 +55,9 @@ class _TrainState extends State<Train> {
                     showType: ShowType.pca,
                     citiesData: _metaTrainCities,
                     provincesData: _metaTrainProvinces); */
-
+/*
               Picker(
+                  //adapter: CustomTrainStationPickerAdapter(),
                   adapter: DateTimePickerAdapter(),
                   changeToFirst: true,
                   hideHeader: false,
@@ -61,8 +66,54 @@ class _TrainState extends State<Train> {
                     print(picker.adapter.text);
                   }).showModal(this.context);
               // });
+              */
+              Widget picker = CupertinoPicker(
+                  itemExtent: 20,
+                  onSelectedItemChanged: (position) {
+                    print('The position is $position');
+                  },
+                  children: [
+                    Text("0"),
+                    Text("1"),
+                    Text("2"),
+                    Text("3"),
+                    Text("4"),
+                  ]);
+              showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          height: 20,
+                          child: Row(
+                            children: <Widget>[Text('取消'), Text('确定')],
+                          ),
+                        ),
+                        Container(
+                          height: 200,
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: picker,
+                              ),
+                              Expanded(
+                                child: picker,
+                              ),
+                              Expanded(
+                                child: picker,
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    );
+                  }).then((val) {
+                // 打印 点击返回的数据
+                print(val);
+              });
             },
-            child: Text('车站时刻表'),
           )
         ],
       ),

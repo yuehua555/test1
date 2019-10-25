@@ -181,6 +181,7 @@ class Picker {
   Widget makePicker([ThemeData themeData, bool isModal = false]) {
     _maxLevel = adapter.maxLevel;
     adapter.picker = this;
+    print('makePicker:' + adapter.toString() + ':'+ adapter.picker.toString());
     adapter.initSelects();
     _widget =
         _PickerWidget(picker: this, themeData: themeData, isModal: isModal);
@@ -445,6 +446,7 @@ class PickerWidgetState<T> extends State<_PickerWidget> {
     PickerAdapter adapter = picker.adapter;
     if (adapter != null) adapter.setColumn(-1);
 
+    print('adapter:' + adapter.toString());
     if (adapter != null && adapter.length > 0) {
       for (int i = 0; i < picker._maxLevel; i++) {
         final int _length = adapter.length;
@@ -1116,6 +1118,7 @@ class DateTimePickerAdapter extends PickerAdapter<DateTime> {
       if (picker.selecteds == null) picker.selecteds = new List<int>();
       for (int i = 0; i < _maxLevel; i++) picker.selecteds.add(0);
     }
+    print('initSelects:' + picker.title.toString() + ':' + picker.selecteds.toString());
   }
 
   @override
@@ -1368,18 +1371,36 @@ class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
   }
 
   @override
-  void initSelects() {
+   Future initSelects() async {
     // if (value == null) value = DateTime.now();
     // _colAP = _getAPColIndex();
     int _maxLevel = getMaxLevel();
+    print('initSelects:' + _metaTrainProvinces.toString());
     if (_metaTrainProvinces == null) {
       // 第一次加载，得到省市，以及用市的第一个值去得到第三列火车站
-      getTrainProvCtiy().whenComplete(getTrainStationFromC('temp'));
+      // 使用第一个数据初始化第二列，然后使用第二列的的第一个数据初始化第三列
+      getTrainProvCtiy().whenComplete(() {
+        int code;
+        _metaTrainProvinces[0].forEach((key, name) {
+          code = key;
+        });
+        getSecondCities(code);
+
+        String reginK;
+        _secondCities[0].forEach((key, name) {
+          reginK = key;
+        });
+        getTrainStationFromC(reginK);
+        print('initSelects:' + _metaTrainProvinces.toString());
+      });
     }
+
     if (picker.selecteds == null || picker.selecteds.length == 0) {
-      //if (picker.selecteds == null) picker.selecteds = new List<int>();
+      if (picker.selecteds == null) picker.selecteds = new List<int>();
       for (int i = 0; i < _maxLevel; i++) picker.selecteds.add(0);
     }
+    print('initSelects:' + picker.selecteds.toString() + picker.adapter.toString());
+
   }
 
   @override
@@ -1436,6 +1457,8 @@ class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
 
   @override
   void doShow() {
+
+    print('doShow');
     /*
     if (_yearBegin == 0)
       getLength();
@@ -1575,6 +1598,8 @@ class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
       responseType: ResponseType.json,
     ));
 
+    dio.interceptors.add(LogInterceptor(responseBody: true));
+
     Response response;
     response = await dio.post('api/TcgRegDef');
     //sleep(Duration(microseconds: 3000));
@@ -1638,30 +1663,41 @@ class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
       responseType: ResponseType.json,
     ));
 
+    dio.interceptors.add(LogInterceptor(responseBody: true));
+
     Response response;
     response = await dio.get('railwayStation?regionK=$K');
     _railwayStations = List();
     if (response.statusCode == 200) {
       // 请求成功
-      StationsData stationsData = StationsData.fromJson(response.data);
-      stationsData.content.forEach((Stations stations) {
-        _railwayStations.add({stations.site.k: stations.site.name});
-      });
-      print(_railwayStations);
+      print(response.data);
+
+      //如果 Content 为空说明没有车站，不需要解析
+      if ((response.data)['Content'] != null) {
+        StationsData stationsData = StationsData.fromJson(response.data);
+        stationsData.content.forEach((Stations stations) {
+          _railwayStations.add({stations.site.k: stations.site.name});
+        });
+        print(_railwayStations);
+      }
     } else {
       print('请求失败，状态码为:' + response.statusCode.toString());
     }
+
+    print('provinces: ' + _metaTrainProvinces.toString());
+    print('cities: ' + _secondCities.toString());
+    print('stations:' + _railwayStations.toString());
   }
 
+  ///根据省的 Adcode 构造第二列城市数组
   List<Map<String, String>> getSecondCities(int adCode) {
-
     Map<int, dynamic> cities = _metaTrainCities[adCode];
     _secondCities = List();
-    cities.forEach((code, city){
+    cities.forEach((code, city) {
       //print(code);
       //print(city);
       Map<String, String> item = city;
-      _secondCities.add({item['K']:item['title']});
+      _secondCities.add({item['K']: item['title']});
     });
     print(_secondCities);
   }
@@ -1670,9 +1706,19 @@ class CustomTrainStationPickerAdapter extends PickerAdapter<int> {
 void main() {
   // 宁夏，吴忠市
   CustomTrainStationPickerAdapter temp = CustomTrainStationPickerAdapter();
-  temp.getTrainProvCtiy().whenComplete(() {
-    temp.getSecondCities(640000);
+  temp.initSelects().whenComplete(() {
+    print('provinces: ' + temp._metaTrainProvinces.toString());
+    print('cities: ' + temp._secondCities.toString());
+    print('stations:' + temp._railwayStations.toString());
   });
+  /*
+  temp.getTrainProvCtiy().whenComplete(() {
+    //temp.getSecondCities(640000);
+    //print(temp._metaTrainProvinces[0].keys.runtimeType);
+    temp.initSelects();
+  });
+
+   */
   // CustomTrainStationPickerAdapter().getTrainStationFromC('fe0N');
   // CustomTrainStationPickerAdapter().getSecondCities(640000);
 }
