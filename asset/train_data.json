@@ -3,180 +3,6 @@
   "Message": "OK",
   "Content": [
     {
-      "Name": "四川省",
-      "Title": "四川",
-      "K": "mvz0",
-      "ProvK": "",
-      "PrefK": "",
-      "AdCode": 510000,
-      "DownLines": [
-        {
-          "Name": "乐山市",
-          "Title": "乐山",
-          "K": "R4k0",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 511100,
-          "DownLines": []
-        },
-        {
-          "Name": "凉山彝族自治州",
-          "Title": "凉山",
-          "K": "A480",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 513400,
-          "DownLines": []
-        },
-        {
-          "Name": "南充市",
-          "Title": "南充",
-          "K": "n4H0",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 511300,
-          "DownLines": []
-        },
-        {
-          "Name": "宜宾市",
-          "Title": "宜宾",
-          "K": "J4R0",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 511500,
-          "DownLines": []
-        },
-        {
-          "Name": "广元市",
-          "Title": "广元",
-          "K": "s4Q0",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 510800,
-          "DownLines": []
-        },
-        {
-          "Name": "广安市",
-          "Title": "广安",
-          "K": "q4N0",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 511600,
-          "DownLines": []
-        },
-        {
-          "Name": "德阳市",
-          "Title": "德阳",
-          "K": "wvL0",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 510600,
-          "DownLines": []
-        },
-        {
-          "Name": "成都市",
-          "Title": "成都",
-          "K": "Sv40",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 510100,
-          "DownLines": [
-            {
-              "Name": "都江堰市",
-              "Title": "都江堰",
-              "K": "FvB0",
-              "ProvK": "mvz0",
-              "PrefK": "Sv40",
-              "AdCode": 510181,
-              "DownLines": []
-            }
-          ]
-        },
-        {
-          "Name": "攀枝花市",
-          "Title": "攀枝花",
-          "K": "cv30",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 510400,
-          "DownLines": []
-        },
-        {
-          "Name": "甘孜藏族自治州",
-          "Title": "甘孜",
-          "K": "74w0",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 513300,
-          "DownLines": []
-        },
-        {
-          "Name": "绵阳市",
-          "Title": "绵阳",
-          "K": "XvJ0",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 510700,
-          "DownLines": []
-        },
-        {
-          "Name": "自贡市",
-          "Title": "自贡",
-          "K": "ovD0",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 510300,
-          "DownLines": []
-        },
-        {
-          "Name": "遂宁市",
-          "Title": "遂宁",
-          "K": "44f0",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 510900,
-          "DownLines": []
-        },
-        {
-          "Name": "阿坝藏族羌族自治州",
-          "Title": "阿坝",
-          "K": "v4h0",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 513200,
-          "DownLines": []
-        },
-        {
-          "Name": "雅安市",
-          "Title": "雅安",
-          "K": "r4Y0",
-          "ProvK": "mvz0",
-          "PrefK": "",
-          "AdCode": 511800,
-          "DownLines": []
-        }
-      ]
-    },
-    {
-      "Name": "北京市",
-      "Title": "北京",
-      "K": "3EDA",
-      "ProvK": "",
-      "PrefK": "",
-      "AdCode": 110000,
-      "DownLines": [
-        {
-          "Name": "北京市",
-          "Title": "北京市",
-          "K": "3EDA",
-          "ProvK": "3EDA",
-          "PrefK": "",
-          "AdCode": 110000,
-          "DownLines": []
-        }
-      ]
-    },
-    {
       "Name": "宁夏回族自治区",
       "Title": "宁夏",
       "K": "LesN",
@@ -351,355 +177,175 @@
       ]
     },
     {
-      "Name": "新疆维吾尔自治区",
-      "Title": "新疆",
-      "K": "egMN",
+      "Name": "四川省",
+      "Title": "四川",
+      "K": "mvz0",
       "ProvK": "",
       "PrefK": "",
-      "AdCode": 650000,
+      "AdCode": 510000,
       "DownLines": [
         {
-          "Name": "乌鲁木齐市",
-          "Title": "乌鲁木齐",
-          "K": "y7fN",
-          "ProvK": "egMN",
+          "Name": "乐山市",
+          "Title": "乐山",
+          "K": "R4k0",
+          "ProvK": "mvz0",
           "PrefK": "",
-          "AdCode": 650100,
+          "AdCode": 511100,
           "DownLines": []
         },
         {
-          "Name": "伊犁哈萨克自治州",
-          "Title": "伊犁",
-          "K": "NiHN",
-          "ProvK": "egMN",
+          "Name": "凉山彝族自治州",
+          "Title": "凉山",
+          "K": "A480",
+          "ProvK": "mvz0",
           "PrefK": "",
-          "AdCode": 654000,
+          "AdCode": 513400,
           "DownLines": []
         },
         {
-          "Name": "克孜勒苏柯尔克孜自治州",
-          "Title": "克州",
-          "K": "U7DN",
-          "ProvK": "egMN",
+          "Name": "南充市",
+          "Title": "南充",
+          "K": "n4H0",
+          "ProvK": "mvz0",
           "PrefK": "",
-          "AdCode": 653000,
+          "AdCode": 511300,
           "DownLines": []
         },
         {
-          "Name": "克拉玛依市",
-          "Title": "克拉玛依",
-          "K": "B7TN",
-          "ProvK": "egMN",
+          "Name": "宜宾市",
+          "Title": "宜宾",
+          "K": "J4R0",
+          "ProvK": "mvz0",
           "PrefK": "",
-          "AdCode": 650200,
+          "AdCode": 511500,
           "DownLines": []
         },
         {
-          "Name": "博尔塔拉蒙古自治州",
-          "Title": "博州",
-          "K": "R7zN",
-          "ProvK": "egMN",
+          "Name": "广元市",
+          "Title": "广元",
+          "K": "s4Q0",
+          "ProvK": "mvz0",
           "PrefK": "",
-          "AdCode": 652700,
+          "AdCode": 510800,
           "DownLines": []
         },
         {
-          "Name": "吐鲁番市",
-          "Title": "吐鲁番",
-          "K": "07sN",
-          "ProvK": "egMN",
+          "Name": "广安市",
+          "Title": "广安",
+          "K": "q4N0",
+          "ProvK": "mvz0",
           "PrefK": "",
-          "AdCode": 650400,
+          "AdCode": 511600,
           "DownLines": []
         },
         {
-          "Name": "和田地区",
-          "Title": "和田",
-          "K": "q7GN",
-          "ProvK": "egMN",
+          "Name": "德阳市",
+          "Title": "德阳",
+          "K": "wvL0",
+          "ProvK": "mvz0",
           "PrefK": "",
-          "AdCode": 653200,
+          "AdCode": 510600,
           "DownLines": []
         },
         {
-          "Name": "哈密市",
-          "Title": "哈密",
-          "K": "G7yN",
-          "ProvK": "egMN",
+          "Name": "成都市",
+          "Title": "成都",
+          "K": "Sv40",
+          "ProvK": "mvz0",
           "PrefK": "",
-          "AdCode": 650500,
+          "AdCode": 510100,
+          "DownLines": [
+            {
+              "Name": "都江堰市",
+              "Title": "都江堰",
+              "K": "FvB0",
+              "ProvK": "mvz0",
+              "PrefK": "Sv40",
+              "AdCode": 510181,
+              "DownLines": []
+            }
+          ]
+        },
+        {
+          "Name": "攀枝花市",
+          "Title": "攀枝花",
+          "K": "cv30",
+          "ProvK": "mvz0",
+          "PrefK": "",
+          "AdCode": 510400,
           "DownLines": []
         },
         {
-          "Name": "喀什地区",
-          "Title": "喀什",
-          "K": "J7CN",
-          "ProvK": "egMN",
+          "Name": "甘孜藏族自治州",
+          "Title": "甘孜",
+          "K": "74w0",
+          "ProvK": "mvz0",
           "PrefK": "",
-          "AdCode": 653100,
+          "AdCode": 513300,
           "DownLines": []
         },
         {
-          "Name": "塔城地区",
-          "Title": "塔城",
-          "K": "FiRN",
-          "ProvK": "egMN",
+          "Name": "绵阳市",
+          "Title": "绵阳",
+          "K": "XvJ0",
+          "ProvK": "mvz0",
           "PrefK": "",
-          "AdCode": 654200,
+          "AdCode": 510700,
           "DownLines": []
         },
         {
-          "Name": "巴音郭楞蒙古自治州",
-          "Title": "巴州",
-          "K": "37vN",
-          "ProvK": "egMN",
+          "Name": "自贡市",
+          "Title": "自贡",
+          "K": "ovD0",
+          "ProvK": "mvz0",
           "PrefK": "",
-          "AdCode": 652800,
+          "AdCode": 510300,
           "DownLines": []
         },
         {
-          "Name": "昌吉回族自治州",
-          "Title": "昌吉",
-          "K": "X75N",
-          "ProvK": "egMN",
+          "Name": "遂宁市",
+          "Title": "遂宁",
+          "K": "44f0",
+          "ProvK": "mvz0",
           "PrefK": "",
-          "AdCode": 652300,
+          "AdCode": 510900,
           "DownLines": []
         },
         {
-          "Name": "石河子市",
-          "Title": "石河子",
-          "K": "MjbN",
-          "ProvK": "egMN",
+          "Name": "阿坝藏族羌族自治州",
+          "Title": "阿坝",
+          "K": "v4h0",
+          "ProvK": "mvz0",
           "PrefK": "",
-          "AdCode": 659001,
+          "AdCode": 513200,
           "DownLines": []
         },
         {
-          "Name": "阿克苏地区",
-          "Title": "阿克苏",
-          "K": "n7BN",
-          "ProvK": "egMN",
+          "Name": "雅安市",
+          "Title": "雅安",
+          "K": "r4Y0",
+          "ProvK": "mvz0",
           "PrefK": "",
-          "AdCode": 652900,
-          "DownLines": []
-        },
-        {
-          "Name": "阿勒泰地区",
-          "Title": "阿勒泰",
-          "K": "WiNN",
-          "ProvK": "egMN",
-          "PrefK": "",
-          "AdCode": 654300,
+          "AdCode": 511800,
           "DownLines": []
         }
       ]
     },
     {
-      "Name": "云南省",
-      "Title": "云南",
-      "K": "63j0",
+      "Name": "北京市",
+      "Title": "北京",
+      "K": "3EDA",
       "ProvK": "",
       "PrefK": "",
-      "AdCode": 530000,
+      "AdCode": 110000,
       "DownLines": [
         {
-          "Name": "丽江市",
-          "Title": "丽江",
-          "K": "d3w0",
-          "ProvK": "63j0",
+          "Name": "北京市",
+          "Title": "北京市",
+          "K": "3EDA",
+          "ProvK": "3EDA",
           "PrefK": "",
-          "AdCode": 530700,
-          "DownLines": []
-        },
-        {
-          "Name": "保山市",
-          "Title": "保山",
-          "K": "Q3q0",
-          "ProvK": "63j0",
-          "PrefK": "",
-          "AdCode": 530500,
-          "DownLines": []
-        },
-        {
-          "Name": "大理白族自治州",
-          "Title": "大理",
-          "K": "hGV0",
-          "ProvK": "63j0",
-          "PrefK": "",
-          "AdCode": 532900,
-          "DownLines": []
-        },
-        {
-          "Name": "德宏傣族景颇族自治州",
-          "Title": "德宏",
-          "K": "pGX0",
-          "ProvK": "63j0",
-          "PrefK": "",
-          "AdCode": 533100,
-          "DownLines": []
-        },
-        {
-          "Name": "怒江傈僳族自治州",
-          "Title": "怒江州",
-          "K": "gGg0",
-          "ProvK": "63j0",
-          "PrefK": "",
-          "AdCode": 533300,
-          "DownLines": []
-        },
-        {
-          "Name": "文山壮族苗族自治州",
-          "Title": "文山",
-          "K": "uG20",
-          "ProvK": "63j0",
-          "PrefK": "",
-          "AdCode": 532600,
-          "DownLines": []
-        },
-        {
-          "Name": "昆明市",
-          "Title": "昆明",
-          "K": "N3m0",
-          "ProvK": "63j0",
-          "PrefK": "",
-          "AdCode": 530100,
-          "DownLines": []
-        },
-        {
-          "Name": "曲靖市",
-          "Title": "曲靖",
-          "K": "F3u0",
-          "ProvK": "63j0",
-          "PrefK": "",
-          "AdCode": 530300,
-          "DownLines": []
-        },
-        {
-          "Name": "楚雄彝族自治州",
-          "Title": "楚雄",
-          "K": "jGA0",
-          "ProvK": "63j0",
-          "PrefK": "",
-          "AdCode": 532300,
-          "DownLines": []
-        },
-        {
-          "Name": "玉溪市",
-          "Title": "玉溪",
-          "K": "W3o0",
-          "ProvK": "63j0",
-          "PrefK": "",
-          "AdCode": 530400,
-          "DownLines": []
-        },
-        {
-          "Name": "红河哈尼族彝族自治州",
-          "Title": "红河",
-          "K": "GGN0",
-          "ProvK": "63j0",
-          "PrefK": "",
-          "AdCode": 532500,
-          "DownLines": []
-        },
-        {
-          "Name": "西双版纳傣族自治州",
-          "Title": "西双版纳",
-          "K": "MGW0",
-          "ProvK": "63j0",
-          "PrefK": "",
-          "AdCode": 532800,
-          "DownLines": []
-        },
-        {
-          "Name": "迪庆藏族自治州",
-          "Title": "迪庆",
-          "K": "PGi0",
-          "ProvK": "63j0",
-          "PrefK": "",
-          "AdCode": 533400,
-          "DownLines": []
-        }
-      ]
-    },
-    {
-      "Name": "青海省",
-      "Title": "青海",
-      "K": "1aSN",
-      "ProvK": "",
-      "PrefK": "",
-      "AdCode": 630000,
-      "DownLines": [
-        {
-          "Name": "果洛藏族自治州",
-          "Title": "果洛",
-          "K": "jaMN",
-          "ProvK": "1aSN",
-          "PrefK": "",
-          "AdCode": 632600,
-          "DownLines": []
-        },
-        {
-          "Name": "海东市",
-          "Title": "海东",
-          "K": "EaYN",
-          "ProvK": "1aSN",
-          "PrefK": "",
-          "AdCode": 630200,
-          "DownLines": []
-        },
-        {
-          "Name": "海北藏族自治州",
-          "Title": "海北",
-          "K": "xaCN",
-          "ProvK": "1aSN",
-          "PrefK": "",
-          "AdCode": 632200,
-          "DownLines": []
-        },
-        {
-          "Name": "海南藏族自治州",
-          "Title": "海南",
-          "K": "BaKN",
-          "ProvK": "1aSN",
-          "PrefK": "",
-          "AdCode": 632500,
-          "DownLines": []
-        },
-        {
-          "Name": "海西蒙古族藏族自治州",
-          "Title": "海西",
-          "K": "GdTN",
-          "ProvK": "1aSN",
-          "PrefK": "",
-          "AdCode": 632800,
-          "DownLines": []
-        },
-        {
-          "Name": "玉树藏族自治州",
-          "Title": "玉树",
-          "K": "0dfN",
-          "ProvK": "1aSN",
-          "PrefK": "",
-          "AdCode": 632700,
-          "DownLines": []
-        },
-        {
-          "Name": "西宁市",
-          "Title": "西宁",
-          "K": "HaUN",
-          "ProvK": "1aSN",
-          "PrefK": "",
-          "AdCode": 630100,
-          "DownLines": []
-        },
-        {
-          "Name": "黄南藏族自治州",
-          "Title": "黄南",
-          "K": "eaGN",
-          "ProvK": "1aSN",
-          "PrefK": "",
-          "AdCode": 632300,
+          "AdCode": 110000,
           "DownLines": []
         }
       ]
@@ -1110,6 +756,360 @@
           "ProvK": "gUiN",
           "PrefK": "",
           "AdCode": 610200,
+          "DownLines": []
+        }
+      ]
+    },
+    {
+      "Name": "新疆维吾尔自治区",
+      "Title": "新疆",
+      "K": "egMN",
+      "ProvK": "",
+      "PrefK": "",
+      "AdCode": 650000,
+      "DownLines": [
+        {
+          "Name": "乌鲁木齐市",
+          "Title": "乌鲁木齐",
+          "K": "y7fN",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 650100,
+          "DownLines": []
+        },
+        {
+          "Name": "伊犁哈萨克自治州",
+          "Title": "伊犁",
+          "K": "NiHN",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 654000,
+          "DownLines": []
+        },
+        {
+          "Name": "克孜勒苏柯尔克孜自治州",
+          "Title": "克州",
+          "K": "U7DN",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 653000,
+          "DownLines": []
+        },
+        {
+          "Name": "克拉玛依市",
+          "Title": "克拉玛依",
+          "K": "B7TN",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 650200,
+          "DownLines": []
+        },
+        {
+          "Name": "博尔塔拉蒙古自治州",
+          "Title": "博州",
+          "K": "R7zN",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 652700,
+          "DownLines": []
+        },
+        {
+          "Name": "吐鲁番市",
+          "Title": "吐鲁番",
+          "K": "07sN",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 650400,
+          "DownLines": []
+        },
+        {
+          "Name": "和田地区",
+          "Title": "和田",
+          "K": "q7GN",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 653200,
+          "DownLines": []
+        },
+        {
+          "Name": "哈密市",
+          "Title": "哈密",
+          "K": "G7yN",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 650500,
+          "DownLines": []
+        },
+        {
+          "Name": "喀什地区",
+          "Title": "喀什",
+          "K": "J7CN",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 653100,
+          "DownLines": []
+        },
+        {
+          "Name": "塔城地区",
+          "Title": "塔城",
+          "K": "FiRN",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 654200,
+          "DownLines": []
+        },
+        {
+          "Name": "巴音郭楞蒙古自治州",
+          "Title": "巴州",
+          "K": "37vN",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 652800,
+          "DownLines": []
+        },
+        {
+          "Name": "昌吉回族自治州",
+          "Title": "昌吉",
+          "K": "X75N",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 652300,
+          "DownLines": []
+        },
+        {
+          "Name": "石河子市",
+          "Title": "石河子",
+          "K": "MjbN",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 659001,
+          "DownLines": []
+        },
+        {
+          "Name": "阿克苏地区",
+          "Title": "阿克苏",
+          "K": "n7BN",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 652900,
+          "DownLines": []
+        },
+        {
+          "Name": "阿勒泰地区",
+          "Title": "阿勒泰",
+          "K": "WiNN",
+          "ProvK": "egMN",
+          "PrefK": "",
+          "AdCode": 654300,
+          "DownLines": []
+        }
+      ]
+    },
+    {
+      "Name": "云南省",
+      "Title": "云南",
+      "K": "63j0",
+      "ProvK": "",
+      "PrefK": "",
+      "AdCode": 530000,
+      "DownLines": [
+        {
+          "Name": "丽江市",
+          "Title": "丽江",
+          "K": "d3w0",
+          "ProvK": "63j0",
+          "PrefK": "",
+          "AdCode": 530700,
+          "DownLines": []
+        },
+        {
+          "Name": "保山市",
+          "Title": "保山",
+          "K": "Q3q0",
+          "ProvK": "63j0",
+          "PrefK": "",
+          "AdCode": 530500,
+          "DownLines": []
+        },
+        {
+          "Name": "大理白族自治州",
+          "Title": "大理",
+          "K": "hGV0",
+          "ProvK": "63j0",
+          "PrefK": "",
+          "AdCode": 532900,
+          "DownLines": []
+        },
+        {
+          "Name": "德宏傣族景颇族自治州",
+          "Title": "德宏",
+          "K": "pGX0",
+          "ProvK": "63j0",
+          "PrefK": "",
+          "AdCode": 533100,
+          "DownLines": []
+        },
+        {
+          "Name": "怒江傈僳族自治州",
+          "Title": "怒江州",
+          "K": "gGg0",
+          "ProvK": "63j0",
+          "PrefK": "",
+          "AdCode": 533300,
+          "DownLines": []
+        },
+        {
+          "Name": "文山壮族苗族自治州",
+          "Title": "文山",
+          "K": "uG20",
+          "ProvK": "63j0",
+          "PrefK": "",
+          "AdCode": 532600,
+          "DownLines": []
+        },
+        {
+          "Name": "昆明市",
+          "Title": "昆明",
+          "K": "N3m0",
+          "ProvK": "63j0",
+          "PrefK": "",
+          "AdCode": 530100,
+          "DownLines": []
+        },
+        {
+          "Name": "曲靖市",
+          "Title": "曲靖",
+          "K": "F3u0",
+          "ProvK": "63j0",
+          "PrefK": "",
+          "AdCode": 530300,
+          "DownLines": []
+        },
+        {
+          "Name": "楚雄彝族自治州",
+          "Title": "楚雄",
+          "K": "jGA0",
+          "ProvK": "63j0",
+          "PrefK": "",
+          "AdCode": 532300,
+          "DownLines": []
+        },
+        {
+          "Name": "玉溪市",
+          "Title": "玉溪",
+          "K": "W3o0",
+          "ProvK": "63j0",
+          "PrefK": "",
+          "AdCode": 530400,
+          "DownLines": []
+        },
+        {
+          "Name": "红河哈尼族彝族自治州",
+          "Title": "红河",
+          "K": "GGN0",
+          "ProvK": "63j0",
+          "PrefK": "",
+          "AdCode": 532500,
+          "DownLines": []
+        },
+        {
+          "Name": "西双版纳傣族自治州",
+          "Title": "西双版纳",
+          "K": "MGW0",
+          "ProvK": "63j0",
+          "PrefK": "",
+          "AdCode": 532800,
+          "DownLines": []
+        },
+        {
+          "Name": "迪庆藏族自治州",
+          "Title": "迪庆",
+          "K": "PGi0",
+          "ProvK": "63j0",
+          "PrefK": "",
+          "AdCode": 533400,
+          "DownLines": []
+        }
+      ]
+    },
+    {
+      "Name": "青海省",
+      "Title": "青海",
+      "K": "1aSN",
+      "ProvK": "",
+      "PrefK": "",
+      "AdCode": 630000,
+      "DownLines": [
+        {
+          "Name": "果洛藏族自治州",
+          "Title": "果洛",
+          "K": "jaMN",
+          "ProvK": "1aSN",
+          "PrefK": "",
+          "AdCode": 632600,
+          "DownLines": []
+        },
+        {
+          "Name": "海东市",
+          "Title": "海东",
+          "K": "EaYN",
+          "ProvK": "1aSN",
+          "PrefK": "",
+          "AdCode": 630200,
+          "DownLines": []
+        },
+        {
+          "Name": "海北藏族自治州",
+          "Title": "海北",
+          "K": "xaCN",
+          "ProvK": "1aSN",
+          "PrefK": "",
+          "AdCode": 632200,
+          "DownLines": []
+        },
+        {
+          "Name": "海南藏族自治州",
+          "Title": "海南",
+          "K": "BaKN",
+          "ProvK": "1aSN",
+          "PrefK": "",
+          "AdCode": 632500,
+          "DownLines": []
+        },
+        {
+          "Name": "海西蒙古族藏族自治州",
+          "Title": "海西",
+          "K": "GdTN",
+          "ProvK": "1aSN",
+          "PrefK": "",
+          "AdCode": 632800,
+          "DownLines": []
+        },
+        {
+          "Name": "玉树藏族自治州",
+          "Title": "玉树",
+          "K": "0dfN",
+          "ProvK": "1aSN",
+          "PrefK": "",
+          "AdCode": 632700,
+          "DownLines": []
+        },
+        {
+          "Name": "西宁市",
+          "Title": "西宁",
+          "K": "HaUN",
+          "ProvK": "1aSN",
+          "PrefK": "",
+          "AdCode": 630100,
+          "DownLines": []
+        },
+        {
+          "Name": "黄南藏族自治州",
+          "Title": "黄南",
+          "K": "eaGN",
+          "ProvK": "1aSN",
+          "PrefK": "",
+          "AdCode": 632300,
           "DownLines": []
         }
       ]
