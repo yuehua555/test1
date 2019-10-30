@@ -1,5 +1,5 @@
 import 'dart:async' show Future;
-import 'train_model.dart';
+import '../lib/pages/train/train_model.dart';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:lpinyin/lpinyin.dart';
