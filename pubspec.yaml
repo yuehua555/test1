@@ -90,4 +90,4 @@ flutter:
      - asset/images/train1.jpg
      - asset/images/CRH.jpg
      - asset/train_data.json
-     - asset/station_data.json
+     - asset/example_station_data.json

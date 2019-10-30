@@ -13,7 +13,7 @@ class StationsData {
   factory StationsData.fromJson(Map<String, dynamic> parsedJson) {
     var list = parsedJson['Content'] as List;
     List<Stations> stationsList =
-        list.map((i) => Stations.fromJson(i)).toList();
+    list.map((i) => Stations.fromJson(i)).toList();
 
     return StationsData(
         code: parsedJson['Code'],

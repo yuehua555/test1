@@ -16,17 +16,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: ttt,
-      home: TrainPickers(),
+      home: Train(),
     );
   }
 }
 
-class TrainPickers extends StatefulWidget {
+class Train extends StatefulWidget {
   @override
-  _TrainPickersState createState() => _TrainPickersState();
+  _TrainState createState() => _TrainState();
 }
 
-class _TrainPickersState extends State<TrainPickers> {
+class _TrainState extends State<Train> {
   FixedExtentScrollController stationController = FixedExtentScrollController();
   FixedExtentScrollController ctr1 = FixedExtentScrollController();
 
@@ -45,23 +45,23 @@ class _TrainPickersState extends State<TrainPickers> {
               onPressed: () {
                 showModalBottomSheet(
                   context: context,
-                  builder: (context) => MyHomePage(title: ttt),
+                  builder: (context) => TrainPickers(title: ttt),
                 );
               })
         ]));
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class TrainPickers extends StatefulWidget {
+  TrainPickers({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _TrainPickersState createState() => new _TrainPickersState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  var _devices = ['ppp'];
+class _TrainPickersState extends State<TrainPickers> {
+  //var _devices = ['ppp'];
   var count = 0;
   var _height = 300.0;
   //省, 是一个数组，数组元素是Map<int, String>
@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
   FixedExtentScrollController cityController = FixedExtentScrollController();
   FixedExtentScrollController stationController = FixedExtentScrollController();
 
-  String _Text = '无';
+  //String _Text = '无';
   int stationCount = 1;
 
   var _provinceBuilderFuture;

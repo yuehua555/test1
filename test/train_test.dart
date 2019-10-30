@@ -1,4 +1,4 @@
-import 'dart:math';
+/*
 
 import 'package:flutter/material.dart';
 import '../lib/pages/train/train_model.dart';
@@ -357,3 +357,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+ */

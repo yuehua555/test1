@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test1/pages/search_page.dart';
-import 'file:///Users/wuyuehua/AndroidStudioProjects/test1/test/train_test.dart';
+import './train/train.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
