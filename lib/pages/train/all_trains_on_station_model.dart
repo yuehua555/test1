@@ -43,13 +43,13 @@ class Trains {
 //SS
 @JsonSerializable()
 class SS {
-  final String id;
+  final int id;
   final String name;
-  final String seq;
+  final int seq;
   final String arrT;
   final String depT;
-  final String runDur;
-  final String km;
+  final int runDur;
+  final int km;
 
   SS(
       {this.id,
@@ -75,13 +75,13 @@ class SS {
 //IS
 @JsonSerializable()
 class IS {
-  final String id;
+  final int id;
   final String name;
-  final String seq;
+  final int seq;
   final String arrT;
   final String depT;
-  final String runDur;
-  final String km;
+  final int runDur;
+  final int km;
 
   IS(
       {this.id,
@@ -107,13 +107,13 @@ class IS {
 //TS
 @JsonSerializable()
 class TS {
-  final String id;
+  final int id;
   final String name;
-  final String seq;
+  final int seq;
   final String arrT;
   final String depT;
-  final String runDur;
-  final String km;
+  final int runDur;
+  final int km;
 
   TS(
       {this.id,
