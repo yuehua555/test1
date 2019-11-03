@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:test1/pages/train/all_trains_on_station_model.dart';
 import 'train_model.dart';
 import 'station_model.dart';
 import 'dart:convert';
 import 'dart:async';
+import 'all_trains_on_station.dart';
 
 void main() => runApp(MyApp());
 String ttt = 'test';
@@ -143,7 +145,8 @@ class _TrainPickersState extends State<TrainPickers> {
                 textColor: Colors.black),
             FlatButton(
                 onPressed: (){
-                  Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AllTrains()));
                 },
                 child: Text("确定"),
                 color: Colors.blue,

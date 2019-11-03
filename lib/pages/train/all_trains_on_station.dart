@@ -23,7 +23,7 @@ class _AllTrainsState extends State<AllTrains> {
   static const String TEKUAI = 'T';    // 特快
   static const String KUAISU = 'K';    // 快速
   static const String LVYOU = 'Y';     // 旅游
-  static const String CHENGJIAO = 'S'; // 城郊
+  static const String CHENGJI = 'S';   // 城际
   static const String PUTONG ='';      // 普通
 
   final String stationName = '北京站';
@@ -33,6 +33,10 @@ class _AllTrainsState extends State<AllTrains> {
   // MAP 元素包括是否始发，上行或下行，车辆编号，类型，从该站出发时间，终点站和到达时间
   List<Map<String, String>> _trains = [];
 
+  int gaotieCount = 0;
+  int dongcheCount = 0;
+  int tekuaiCount = 0;
+  int otherCount = 0; // 非高铁，动车，特快均归入其它
 
   var temp;
   var str;
@@ -65,34 +69,60 @@ class _AllTrainsState extends State<AllTrains> {
           isBegin = false;
         }
         train['begin'] = (isBegin? '上行' : '下行');
-        // 根据列车名字编号的首字母判断列车的类型
+        // 根据列车名字编号的首字母判断列车的类型，数字就是普通
         if (num.tryParse(source.no.substring(0,1)) != null ) {
           train['type'] = '普通';
+          otherCount++;
         } else {
           switch(source.no.substring(0,1)) {
-            case GAOTIE: train['type'] = '高铁'; break;
-            case DONCCHE: train['type'] = '动车'; break;
-            case ZHIKUAI: train['type'] = '直快'; break;
-            case KUAISU: train['type'] = '快速'; break;
-            case LVYOU: train['type'] = '旅游'; break;
-            case CHENGJIAO: train['type'] = '城郊'; break;
-            default: print('没有这种类型的火车'); break;
+            case GAOTIE: train['type']  = '高铁'; gaotieCount++; break;
+            case DONCCHE: train['type'] = '动车'; dongcheCount++;break;
+            case ZHIKUAI: train['type'] = '直快'; otherCount++; break;
+            case TEKUAI: train['type']  = '特快'; tekuaiCount++; break;
+            case KUAISU: train['type']  = '快速'; otherCount++;break;
+            case LVYOU: train['type']   = '旅游'; otherCount++;break;
+            case CHENGJI: train['type'] = '城际'; otherCount++;break;
+            default: print('没有这种类型的火车:' + source.no.substring(0,1)); otherCount++; break;
           }
         }
-        ppp
+
+        train['depT'] = source.iS.depT; // begin time
+        if(source.iS.id == source.sS.id) {
+          train['beginMiddle'] = '始';
+        } else {
+          train['beginMiddle'] = '过';
+        }
+
         if (checkTrainNoUpOrDown(source.no)) {
           upCount++;
+          train['upDown'] = '上行';
         } else {
           downCount++;
+          train['upDown'] = '下行';
         }
+
+        train['arrT'] = source.tS.arrT; // end time in end station
+        train['terminalStation'] = source.tS.name; // end station name
+        train['currentStation'] = source.iS.name; // current station name
+        _trains.add(train);
       }
       print('TC:'+totalCount.toString()+', UC:' + upCount.toString()+', DC:'+downCount.toString());
+      print(_trains);
+      _trains.sort((a,b) {
+        return DateTime.parse(a['depT']).compareTo(DateTime.parse(b['depT']));
+      });
+      print('After sort:\n'+ _trains.toString());
+
     });
     //print(temp);
   }
 
   @override
   Widget build(BuildContext context) {
+
+    //下划线widget预定义以供复用。
+    Widget divider1=Divider(color: Colors.blue,);
+    Widget divider2=Divider(color: Colors.green);
 
     return Scaffold(
       appBar: AppBar(title: Text('xx站')),
@@ -128,7 +158,7 @@ class _AllTrainsState extends State<AllTrains> {
                   highlightColor: Colors.blue[700],
                   colorBrightness: Brightness.dark,
                   splashColor: Colors.grey,
-                  child: Text("高\n铁\n 0",),
+                  child: Text('高\n铁\n ' + gaotieCount.toString(),),
                   shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
                   onPressed: () {},
                 ),
@@ -139,7 +169,7 @@ class _AllTrainsState extends State<AllTrains> {
                   highlightColor: Colors.blue[700],
                   colorBrightness: Brightness.dark,
                   splashColor: Colors.grey,
-                  child: Text("动\n车\n 0",),
+                  child: Text('动\n车\n ' + dongcheCount.toString(),),
                   shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
                   onPressed: () {},
                 ),
@@ -150,7 +180,7 @@ class _AllTrainsState extends State<AllTrains> {
                   highlightColor: Colors.blue[700],
                   colorBrightness: Brightness.dark,
                   splashColor: Colors.grey,
-                  child: Text("特\n快\n 0",),
+                  child: Text('特\n快\n ' + tekuaiCount.toString(),),
                   shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
                   onPressed: () {},
                 ),
@@ -161,7 +191,7 @@ class _AllTrainsState extends State<AllTrains> {
                   highlightColor: Colors.blue[700],
                   colorBrightness: Brightness.dark,
                   splashColor: Colors.grey,
-                  child: Text("其\n它\n 0",),
+                  child: Text('其\n它\n ' + otherCount.toString(),),
                   shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
                   onPressed: () {},
                 ),
@@ -174,7 +204,20 @@ class _AllTrainsState extends State<AllTrains> {
             height: 50,
             child: Center(child: Text('出发列车时刻：' + totalCount.toString() + '条'),),
           ),
-          Text('3')
+          Container(
+            height: 400,
+            child: ListView.separated(
+              itemCount: _trains.length,
+              //列表项构造器
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(title: Text('$_trains[index]'));
+              },
+              //分割器构造器
+              separatorBuilder: (BuildContext context, int index) {
+                return index%2==0?divider1:divider2;
+              },
+            ),
+          )
         ],
       ),
     );

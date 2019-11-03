@@ -40,7 +40,7 @@ class Trains {
   }
 }
 
-//SS
+//SS 始发站
 @JsonSerializable()
 class SS {
   final int id;
@@ -72,7 +72,7 @@ class SS {
   }
 }
 
-//IS
+//IS 当前站
 @JsonSerializable()
 class IS {
   final int id;
@@ -104,7 +104,7 @@ class IS {
   }
 }
 
-//TS
+//TS 终点站
 @JsonSerializable()
 class TS {
   final int id;
