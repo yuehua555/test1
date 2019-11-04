@@ -209,12 +209,13 @@ class _AllTrainsState extends State<AllTrains> {
             child: ListView.separated(
               itemCount: _trains.length,
               //列表项构造器
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(title: Text('$_trains[index]'));
+              itemBuilder: (context, index) {
+                String _text = _trains[index]['name'];
+                return ListTile(title: Text('$_text'));
               },
               //分割器构造器
-              separatorBuilder: (BuildContext context, int index) {
-                return index%2==0?divider1:divider2;
+              separatorBuilder: (context,index) {
+                return index % 2 ==0 ? divider1: divider2;
               },
             ),
           )
