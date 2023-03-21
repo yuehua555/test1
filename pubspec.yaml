@@ -30,7 +30,7 @@ dependencies:
   lpinyin: ^1.0.7
 
   json_annotation: ^3.0.0
-  dio: ^3.0.3
+  dio: ">=3.0.3 <6.0.0"
 
 dev_dependencies:
   flutter_test:
